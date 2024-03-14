@@ -3,6 +3,8 @@ package com.sitesh.emsbackend.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 
 @Getter
 @Setter
@@ -12,8 +14,7 @@ import lombok.*;
 @Table(name= "employees")
 public class Employee {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private UUID userId;
     @Column(name="first_name")
     private String firstname;
     @Column(name="last_name")
@@ -21,5 +22,7 @@ public class Employee {
     @Column(name="email_id", nullable = false, unique = true)
     private String email;
     @Column(name="phone_number", nullable = false, unique = true)
-    private int phoneno;
+    private Long phoneno;
+    @Lob
+    private byte[] data;
 }
